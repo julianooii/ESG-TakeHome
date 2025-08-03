@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
+import requests
+from io import StringIO
 
 st.set_page_config(page_title="Water Usage & Recycling", layout="wide")
 st.title("💧 Water Usage and Recycling")
@@ -9,7 +11,9 @@ st.title("💧 Water Usage and Recycling")
 @st.cache_data
 def load_data():
     print("Loading data...")
-    return pd.read_csv(r"data\RatingRegister.csv", index_col=False)
+    url = "https://nabersstorage.blob.core.windows.net/registers/RatingRegister.csv"
+    response = requests.get(url)
+    return pd.read_csv(StringIO(response.content.decode('utf-8')), index_col=False)
 
 print("Current working directory:", os.getcwd())
 df = load_data()

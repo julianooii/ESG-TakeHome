@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.set_page_config(page_title="Geographic Distribution", layout="wide")
 st.title("📍 Geographic Distribution & Overview")
@@ -10,6 +11,7 @@ def load_data():
     print("Loading data...")
     return pd.read_csv(r"data\RatingRegister.csv", index_col=False)
 
+print("Current working directory:", os.getcwd())
 df = load_data()
 
 metric = st.selectbox("Select Metric", [

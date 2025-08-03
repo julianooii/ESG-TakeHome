@@ -1,6 +1,8 @@
+import os
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.set_page_config(page_title="Energy Performance", layout="wide")
 st.title("⚡ Energy Performance")
@@ -8,8 +10,9 @@ st.title("⚡ Energy Performance")
 @st.cache_data
 def load_data():
     print("Loading data...")
-    return pd.read_csv(r"data\RatingRegister.csv", index_col=False)
+    return pd.read_csv(r"../data/RatingRegister.csv", index_col=False)
 
+print("Current working directory:", os.getcwd())
 
 df = load_data()
 

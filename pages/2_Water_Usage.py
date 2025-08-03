@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
 st.set_page_config(page_title="Water Usage & Recycling", layout="wide")
 st.title("💧 Water Usage and Recycling")
@@ -10,7 +11,7 @@ def load_data():
     print("Loading data...")
     return pd.read_csv(r"data\RatingRegister.csv", index_col=False)
 
-
+print("Current working directory:", os.getcwd())
 df = load_data()
 
 st.subheader("Water Consumption vs Recycled Water")

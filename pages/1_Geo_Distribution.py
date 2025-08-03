@@ -8,7 +8,7 @@ st.title("📍 Geographic Distribution & Overview")
 @st.cache_data
 def load_data():
     print("Loading data...")
-    return pd.read_csv(r"C:\Users\julia\Downloads\RatingRegister.csv", index_col=False)
+    return pd.read_csv(r"data\RatingRegister.csv", index_col=False)
 
 df = load_data()
 
